@@ -52,8 +52,5 @@ subprojects {
   dependencies {
     compile("com.jayway.jsonpath:json-path")
     compileOnly("org.projectlombok:lombok")
-    testCompile("org.springframework.boot:spring-boot-starter-test")
-    testCompile("io.projectreactor:reactor-test")
-    testCompileOnly("org.projectlombok:lombok")
   }
 }

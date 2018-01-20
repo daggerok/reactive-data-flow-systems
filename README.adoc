@@ -1,6 +1,6 @@
-= reactive-dataflow-sysytems image:https://travis-ci.org/daggerok/reactive-data-flow-systems.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/reactive-data-flow-systems"]
+= reactive-data-flow-systems image:https://travis-ci.org/daggerok/reactive-data-flow-systems.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/reactive-data-flow-systems"]
 
-This repository is containing reactive data-flow systems integration usin kafka, tailable mongodb webflux api
+This repository is containing reactive data-flow systems integration using kafka, tailable mongodb webflux api.
 
 .build, run and test
 ----
