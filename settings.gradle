@@ -1,0 +1,4 @@
+rootProject.name = "reactive-dataflow-sysytems"
+include "kafka"
+include "reactive-dataflow-api"
+include "reactive-dataflow-processor"

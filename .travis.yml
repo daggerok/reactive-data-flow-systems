@@ -1,0 +1,62 @@
+sudo: required
+group: travis_lts
+
+env:
+  global:
+    TERM=dumb
+
+language: java
+jdk:
+- openjdk8
+- oraclejdk8
+
+install: true
+before_install:
+- sudo apt update -y || true
+- sudo apt install -y curl python-pip
+- sudo pip install httpie
+- source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+- stop_any 5432 5672 27017 8080
+
+script:
+- bash gradlew
+- java -jar ./kafka/build/libs/*.jar &
+- wait_for 8081
+- java -jar ./reactive-dataflow-api/build/libs/*.jar &
+- java -jar ./reactive-dataflow-processor/build/libs/*.jar &
+- wait_for 8082 8083
+- curl 127.0.0.1:8083 &
+- sleep 1
+- http :8082 body='message 1'
+- sleep 1
+- curl 127.0.0.1:8083 &
+- sleep 1
+- http :8082 body='message 2'
+- sleep 1
+- http :8082 body='message 3'
+- sleep 1
+- stop_any 8081 8082 8083
+
+- bash mvnw
+- java -jar ./kafka/target/*.jar &
+- wait_for 8081
+- java -jar ./reactive-dataflow-api/target/*.jar &
+- java -jar ./reactive-dataflow-processor/target/*.jar &
+- wait_for 8082 8083
+- curl 127.0.0.1:8083 &
+- curl 127.0.0.1:8083 &
+- sleep 1
+- http :8082 body='message 4'
+- sleep 1
+- curl 127.0.0.1:8083 &
+- sleep 1
+- http :8082 body='message 5'
+- sleep 1
+- http :8082 body='message 6'
+- sleep 1
+- stop_any 8081 8082 8083
+
+cache:
+  directories:
+  - $HOME/.m2
+  - $HOME/.gradle
