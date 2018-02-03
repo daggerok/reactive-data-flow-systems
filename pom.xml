@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>daggerok</groupId>
-  <artifactId>reactive-dataflow-systems</artifactId>
+  <artifactId>reactive-data-flow-systems</artifactId>
   <version>0.0.1</version>
   <packaging>pom</packaging>
 
@@ -16,8 +16,8 @@
 
   <modules>
     <module>kafka</module>
-    <module>reactive-dataflow-api</module>
-    <module>reactive-dataflow-processor</module>
+    <module>reactive-data-flow-api</module>
+    <module>reactive-data-flow-processor</module>
   </modules>
 
   <build>
@@ -27,7 +27,7 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>2.0.0.M7</version>
+        <version>2.0.0.RC1</version>
       </plugin>
     </plugins>
   </build>
