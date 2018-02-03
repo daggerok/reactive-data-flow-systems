@@ -22,8 +22,8 @@ script:
 - bash gradlew
 - java -jar ./kafka/build/libs/*.jar &
 - wait_for 8081
-- java -jar ./reactive-dataflow-api/build/libs/*.jar &
-- java -jar ./reactive-dataflow-processor/build/libs/*.jar &
+- java -jar ./reactive-data-flow-api/build/libs/*.jar &
+- java -jar ./reactive-data-flow-processor/build/libs/*.jar &
 - wait_for 8082 8083
 - curl 127.0.0.1:8083 &
 - sleep 1
@@ -40,8 +40,8 @@ script:
 - bash mvnw
 - java -jar ./kafka/target/*.jar &
 - wait_for 8081
-- java -jar ./reactive-dataflow-api/target/*.jar &
-- java -jar ./reactive-dataflow-processor/target/*.jar &
+- java -jar ./reactive-data-flow-api/target/*.jar &
+- java -jar ./reactive-data-flow-processor/target/*.jar &
 - wait_for 8082 8083
 - curl 127.0.0.1:8083 &
 - curl 127.0.0.1:8083 &
